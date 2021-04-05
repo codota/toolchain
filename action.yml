@@ -1,6 +1,6 @@
-name: 'rust-toolchain'
-description: 'Install the Rust toolchain'
-author: 'actions-rs team'
+name: "rust-toolchain"
+description: "Install the Rust toolchain"
+author: "actions-rs team"
 branding:
   icon: play-circle
   color: black
@@ -40,5 +40,5 @@ outputs:
     description: Installed rustup version
 
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: "node12"
+  main: "dist/index.js"
