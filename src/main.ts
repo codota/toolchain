@@ -9,7 +9,11 @@ type Profile = "minimal" | "default" | "full";
 
 async function run(): Promise<void> {
     // we use path.join to make sure this works on Windows, Linux and MacOS
-    const toolchainOverridePath = path.join(process.cwd(), "rust-toolchain");
+    const toolchainOverridePath = path.join(
+        process.cwd(),
+        core.getInput("working-directory"),
+        "rust-toolchain"
+    );
 
     const opts = args.getToolchainArgs(toolchainOverridePath);
     const rustup = await RustUp.getOrInstall();
