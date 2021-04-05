@@ -5,6 +5,9 @@ branding:
   icon: play-circle
   color: black
 inputs:
+  working-directory:
+    description: The working directory to find the rust-toolchain in.
+    required: false
   toolchain:
     description: |
       Rust toolchain name.
