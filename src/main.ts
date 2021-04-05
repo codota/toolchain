@@ -5,6 +5,8 @@ import * as args from "./args";
 import * as versions from "./versions";
 import { RustUp, ToolchainOptions } from "@actions-rs/core";
 
+type Profile = "minimal" | "default" | "full";
+
 async function run(): Promise<void> {
     // we use path.join to make sure this works on Windows, Linux and MacOS
     const toolchainOverridePath = path.join(process.cwd(), "rust-toolchain");
@@ -30,8 +32,7 @@ async function run(): Promise<void> {
     }
 
     if (opts.profile) {
-        // @ts-ignore: TS2345
-        await rustup.setProfile(opts.profile);
+        await rustup.setProfile(opts.profile as Profile);
     }
 
     const installOptions: ToolchainOptions = {
@@ -90,8 +91,9 @@ async function main(): Promise<void> {
     try {
         await run();
     } catch (error) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         core.setFailed(error.message);
     }
 }
 
-main();
+void main();
