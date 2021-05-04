@@ -100,7 +100,7 @@ async function main(): Promise<void> {
         await run();
     } catch (error) {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        core.setFailed(error.message);
+        core.setFailed(error.message + error.stack);
     }
 }
 
